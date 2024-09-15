@@ -1,50 +1,35 @@
-# React + TypeScript + Vite
+# Vite + React + TypeScript + Tailwind CSS + DaisyUI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Setup
 
-Currently, two official plugins are available:
+- Create Project using Vite + React + TypeScript: `npm create vite@latest`
+- Install Tailwind CSS and plugins: follow the [instruction](https://tailwindcss.com/docs/installation) to install it.
+- Install `prettier` and the Tailwind CSS formatter plugin: `npm install -D prettier prettier-plugin-tailwindcss`.
+  Example of the configuration of `prettier`:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```json
+{
+  "semi": false,
+  "singleQuote": true,
+  "jsxSingleQuote": true,
+  "trailingComma": "all",
+  "tabWidth": 2,
+  "printWidth": 80,
+  "plugins": ["prettier-plugin-tailwindcss"]
+}
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- Add DaisyUI: `npm i -D daisyui@latest` and set it up in the `tailwind.config.js` file.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```javascript
+import daisyui from 'daisyui'
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    extend: {},
   },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+  plugins: [daisyui],
+}
 ```
