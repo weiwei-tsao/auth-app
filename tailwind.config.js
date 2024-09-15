@@ -6,5 +6,5 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [daisyui, typography],
+  plugins: [daisyui],
 }
